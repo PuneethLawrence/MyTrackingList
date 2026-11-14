@@ -350,14 +350,20 @@ function createItemCardHTML(item) {
         <button onclick="deleteItem('${item.id}')" style="display: block; width: 100%; text-align: left; padding: 8px 16px; background: none; border: none; color: #ef4444; cursor: pointer; font-size: 0.85rem;">Delete</button>
       </div>
 
-      <!-- Item Image Preview Banner -->
-      ${item.image ? `<div style="width: 100%; height: 200px; background: #080a09;"><img src="${item.image}" alt="${item.name}" style="width: 100%; height: 100%; object-fit: cover;"></div>` : ''}
+      <!-- Item Image Preview Banner with strict aspect ratio -->
+      ${item.image ? `
+        <div style="width: 100%; aspect-ratio: 2 / 3; background: #080a09; overflow: hidden; position: relative;">
+          <img src="${item.image}" alt="${item.name}" style="width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block;">
+        </div>` : ''
+      }
 
       <!-- Content Section -->
-      <div style="padding: 20px; display: flex; flex-direction: column; flex-grow: 1;">
-        <h3 style="color: #fff; margin: 0 0 8px 0; font-size: 1.15rem; font-weight: 600;">${escapeHTML(item.name)}</h3>
-        <p style="color: #9ca3af; font-size: 0.85rem; margin: 0 0 12px 0;">Status: <span style="color: #10b981; font-weight: 500;">${escapeHTML(item.status)}</span></p>
-        ${item.description ? `<p class="card-description">${escapeHTML(item.description)}</p>` : ''}
+      <div style="padding: 16px; display: flex; flex-direction: column; flex-grow: 1; min-width: 0;">
+        <h3 title="${escapeHTML(item.name)}" style="color: #fff; margin: 0 0 6px 0; font-size: 1.05rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%;">
+          ${escapeHTML(item.name)}
+        </h3>
+        <p style="color: #9ca3af; font-size: 0.82rem; margin: 0 0 8px 0;">Status: <span style="color: #10b981; font-weight: 500;">${escapeHTML(item.status)}</span></p>
+        ${item.description ? `<p class="card-description" style="color: #9ca3af; font-size: 0.8rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin: 0;">${escapeHTML(item.description)}</p>` : ''}
       </div>
     </div>
   `;
