@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyTrackingList</title>
+  
+  <!-- Favicon link -->
+  <link rel="icon" type="image/png" href="img/favicon.png">
+
+  <link rel="stylesheet" href="css/landing.css">
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="navbar">
+    <div class="logo">
+      <span class="logo-accent">MyTracking</span>List
+    </div>
+    <nav class="nav-auth" id="nav-auth-container">
+  <button id="open-signin-btn" class="btn btn-secondary">Sign In</button>
+  <button id="open-signup-btn" class="btn btn-primary">Create Account</button>
+</nav>
+  </header>
+
+  <!-- Clean Hero Title Section -->
+<!-- Hero Section -->
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-badge">WELCOME TO MYTRACKINGLIST</div>
+    <h1>Organize everything you <span class="highlight">watch and play.</span></h1>
+    <p style="color: #9ca3af; margin-top: 1rem; font-size: 1.1rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+      Keep track of all the movies, games, and books you want to watch, play, and read in one simple place.
+    </p>
+
+    <!-- Quick Stats Bar -->
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-number">10K+</span>
+        <span class="stat-label">Items Tracked</span>
+      </div>
+      <span class="stat-divider">•</span>
+      <div class="stat-item">
+        <span class="stat-number">Multiple</span>
+        <span class="stat-label">Media Types</span>
+      </div>
+      <span class="stat-divider">•</span>
+      <div class="stat-item">
+        <span class="stat-number">100%</span>
+        <span class="stat-label">Free Forever</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Section 1: Watchlist & Backlog -->
+  <section class="media-section" id="watch-play-section">
+    <div class="section-header">
+      <div>
+        <span class="section-sub">LOG & TRACK</span>
+        <h2>Watchlist & Backlog</h2>
+      </div>
+      
+    </div>
+
+    <!-- Featured Translucent Cross-Fade Showcase -->
+    <div class="hero-showcase" id="crossfade-showcase"></div>
+
+  </section>
+
+
+  <!-- Section 2: Reads Tracking -->
+  <section class="media-section" id="reads-section">
+    <div class="section-header">
+      <div>
+        <span class="section-sub">READING LIST</span>
+        <h2>Track Your Reads</h2>
+      </div>
+     
+    </div>
+
+    <!-- Infinite Scroll Container -->
+    <div class="infinite-scroll-container">
+      <div class="portrait-grid" id="reads-grid"></div>
+    </div>
+  </section>
+
+
+  <!-- Sign In Modal -->
+  <div id="signin-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <button class="modal-close" id="close-signin-btn">&times;</button>
+      <h2>Sign In</h2>
+      
+      <form id="signin-form">
+        <div class="form-group">
+          <label for="signin-email">Email Address</label>
+          <input type="email" id="signin-email" required placeholder="you@example.com">
+        </div>
+        <div class="form-group">
+          <label for="signin-password">Password</label>
+          <input type="password" id="signin-password" required placeholder="••••••••">
+        </div>
+        <button type="submit" class="btn btn-primary btn-full">Sign In</button>
+        <div style="margin-top: 12px; text-align: right;">
+          <a href="#" id="forgot-password-link" style="color: #60a5fa; font-size: 0.85rem; text-decoration: none;">Forgot password?</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Sign Up Modal -->
+  <div id="signup-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <button class="modal-close" id="close-signup-btn">&times;</button>
+      <h2>Create Account</h2>
+      
+      <div id="signup-error-msg" class="error-banner hidden"></div>
+
+      <form id="signup-form">
+        <div class="form-group field-container">
+          <label for="signup-username">Username</label>
+          <input 
+            type="text" 
+            id="signup-username" 
+            minlength="4" 
+            required 
+            placeholder="e.g., Shadow99"
+            autocomplete="off"
+          >
+          <div class="input-tooltip hidden" id="username-tooltip">
+            Must be at least 4 characters (letters & numbers allowed).
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="signup-email">Email Address</label>
+          <input 
+            type="email" 
+            id="signup-email" 
+            required 
+            placeholder="you@example.com"
+          >
+        </div>
+
+        <div class="form-group field-container">
+          <label for="signup-password">Password</label>
+          <input 
+            type="password" 
+            id="signup-password" 
+            minlength="8" 
+            required 
+            placeholder="••••••••"
+          >
+          <div class="input-tooltip hidden" id="password-tooltip">
+            Min 8 characters (Must include: 1 Uppercase, 1 Lowercase, 1 Number, 1 Special Character).
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-full">Sign Up</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/landing.js"></script>
+
+
+  <!--  Firebase Authentication Script -->
+<script type="module" src="js/auth.js"></script>
+
+<!-- ==========================================
+     FOOTER SECTION
+     ========================================== -->
+
+<footer class="app-footer">
+  <div class="footer-content">
+    <div class="footer-brand">
+      <span class="footer-logo">MyTrackingList</span>
+      <p>Your cinematic hub for tracking games, movies, reads and much more</p>
+    </div>
+    <div class="footer-links">
+  <a href="privacy.html">Privacy</a>
+  <a href="terms.html">Terms</a>
+  </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 MyTrackingList. Built for high-performance tracking.</p>
+  </div>
+</footer>
+
+
+</body>
+</html>
