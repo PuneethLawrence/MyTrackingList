@@ -1,5 +1,5 @@
 /* ==========================================
-   THEME COLORS (MATCHING LANDING PAGE)
+   1. THEME COLORS & LAYOUT BASE
    ========================================== */
 body, main {
   background-color: #080a09 !important;
@@ -10,39 +10,29 @@ header, aside {
   background-color: #111413 !important;
 }
 
-/* ==========================================
-   EMERALD DIVIDER LINES
-   ========================================== */
-/* Vertical emerald divider between sidebar and main content */
 aside {
   border-right: 3px solid #10b981 !important;
+  z-index: 1100 !important;
 }
 
-/* Remove outer padding on main so the divider touches the sidebar */
 main {
   padding: 0 !important;
 }
 
-/* Horizontal emerald divider touches the vertical sidebar line cleanly */
 main > div:first-child {
   padding: 24px 30px 16px 30px !important;
   margin-bottom: 0 !important;
   border-bottom: 3px solid #10b981 !important;
 }
 
-/* Keep the 30px spacing for the content area below the line */
-#media-grid {
-  padding: 30px;
-}
-
 /* ==========================================
-   SIDEBAR CATEGORIES (STRUCTURED ROW LOOK)
+   2. SIDEBAR CATEGORIES (STRUCTURED ROW LOOK)
    ========================================== */
 #category-list {
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 6px;
   overflow: hidden;
-  background-color: #161a19; /* Slightly lighter than sidebar so rows stand out */
+  background-color: #161a19;
 }
 
 #category-list li {
@@ -53,7 +43,6 @@ main > div:first-child {
   border-bottom: none;
 }
 
-/* Alternating subtle row tint like an Excel sheet */
 #category-list li:nth-child(even) .category-btn:not(.active) {
   background-color: rgba(255, 255, 255, 0.03) !important;
 }
@@ -63,7 +52,7 @@ main > div:first-child {
   text-align: left;
   padding: 11px 14px !important;
   margin-bottom: 0 !important;
-  border-radius: 0 !important; /* Flat edges so rows stack like table cells */
+  border-radius: 0 !important;
   color: #d1d5db !important;
   background: transparent !important;
   border: none !important;
@@ -82,63 +71,33 @@ main > div:first-child {
   font-weight: 700 !important;
 }
 
-/* ==========================================
-   MEDIA GRID & CARDS (EMERALD & CARBON BLACK)
-   ========================================== */
-#media-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  padding: 30px;
-}
-
-/* + Add Item Card Tile */
-.add-item-card {
-  background: rgba(16, 185, 129, 0.03);
-  border: 2px dashed rgba(16, 185, 129, 0.3);
-  border-radius: 10px;
+.category-view-header,
+.active-category-header {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 380px;
-  cursor: pointer;
-  color: #10b981;
-  font-weight: 500;
-  transition: all 0.2s ease;
+  text-align: center;
+  width: 100%;
 }
 
-.add-item-card:hover {
-  border-color: #10b981;
-  background: rgba(16, 185, 129, 0.08);
-}
-
-/* Standard Item Cards */
-.media-card {
-  position: relative;
-  background: #111413;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 10px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  min-height: 380px;
-  transition: transform 0.2s ease, border-color 0.2s ease;
-}
-
-.media-card:hover {
-  transform: translateY(-3px);
-  border-color: rgba(16, 185, 129, 0.4);
+.category-view-header h2,
+.active-category-header h2 {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* ==========================================
-   GRID & CARD HEIGHT / THEME STYLING
+   3. MEDIA GRID & ITEM CARDS
    ========================================== */
 #media-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 24px;
   padding: 30px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* + Add Item Card Tile */
@@ -150,7 +109,7 @@ main > div:first-child {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 420px !important; /* Taller card height */
+  min-height: 380px;
   cursor: pointer;
   color: #10b981;
   font-weight: 500;
@@ -163,56 +122,75 @@ main > div:first-child {
 }
 
 /* Standard Item Cards */
-.item-card {
+.item-card,
+.media-card {
   position: relative;
-  background: #111413 !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  background: #111413;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 10px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  min-height: 420px !important; /* Taller card height matching add tile */
+  min-width: 0;
   transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
-.item-card:hover {
+.item-card:hover,
+.media-card:hover {
   transform: translateY(-3px);
   border-color: rgba(16, 185, 129, 0.4) !important;
 }
 
-/* ==========================================
-   RESPONSIVE MEDIA GRID
-   ========================================== */
-#media-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 24px;
-  padding: 30px;
+.item-card img,
+.media-card img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
 }
 
-/* Optional: tighten padding slightly on smaller viewports */
-@media (max-width: 650px) {
-  #media-grid {
-    padding: 16px;
-    gap: 16px;
-  }
+.item-card h3,
+.item-card h4,
+.item-card .item-title,
+.media-card h3,
+.media-card h4,
+.media-card .card-title {
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
+.card-description {
+  color: #d1d5db;
+  font-size: 0.85rem;
+  margin: 0;
+  line-height: 1.5;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  word-break: break-word;
+}
 
 /* ==========================================
-   MOBILE HAMBURGER & SLIDE-OUT SIDEBAR
+   4. HAMBURGER BUTTON & SIDEBAR OVERLAY
    ========================================== */
 .hamburger-btn {
   display: none;
   background: transparent;
   border: 1px solid rgba(16, 185, 129, 0.4);
   color: #10b981;
-  font-size: 1.4rem;
-  padding: 4px 10px;
+  font-size: 1.2rem;
+  width: 36px;
+  height: 36px;
   border-radius: 6px;
   cursor: pointer;
   margin-right: 12px;
-  line-height: 1;
+  flex-shrink: 0;
   transition: background 0.2s ease, border-color 0.2s ease;
 }
 
@@ -234,187 +212,17 @@ main > div:first-child {
   display: block;
 }
 
-
-.card-description {
-  color: #d1d5db;
-  font-size: 0.85rem;
-  margin: 0;
-  line-height: 1.5;
-  
-  /* Limits description to 3 lines max with an ellipsis (...) */
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
-  word-break: break-word;
-}
-
-
-@media (max-width: 650px) {
-  .hamburger-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  aside {
-    position: fixed !important;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 260px !important;
-    max-width: 80vw;
-    height: 100vh !important;
-    z-index: 999;
-    transform: translateX(-100%);
-    transition: transform 0.25s ease-in-out;
-    border-right: 2px solid #10b981 !important;
-    border-bottom: none !important;
-  }
-
-  aside.open {
-    transform: translateX(0);
-  }
-}
-
-/* Target the container wrapping your category title and Edit/Delete buttons */
-.category-view-header, .active-category-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  width: 100%;
-}
-
-/* Ensure the category title itself is centered */
-.category-view-header h2, .active-category-header h2 {
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-@media (max-width: 650px) {
-  /* Keep the hamburger button compact inside the top header */
-  .hamburger-btn {
-    display: inline-flex !important;
-    align-items: center;
-    justify-content: center;
-    width: 38px !important;
-    height: 38px !important;
-    padding: 0 !important;
-    margin-right: 12px !important;
-    flex-shrink: 0;
-  }
-
-  /* Prevent the category title & Edit/Delete buttons from squishing */
-  #current-category-title {
-    font-size: 1.35rem !important;
-    margin-bottom: 8px;
-  }
-
-  /* Give the header container inside <main> room to wrap cleanly */
-  main > div:first-child {
-    flex-wrap: wrap !important;
-    gap: 10px !important;
-    padding: 16px !important;
-  }
-}
-
-@media (max-width: 650px) {
-  /* 1. Hamburger button styling */
-  .hamburger-btn {
-    display: inline-flex !important;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-    border: 1px solid rgba(16, 185, 129, 0.4);
-    color: #10b981;
-    font-size: 1.2rem;
-    width: 36px;
-    height: 36px;
-    border-radius: 6px;
-    cursor: pointer;
-  }
-
-  /* 2. Turn <aside> into a hidden slide-out drawer on mobile */
-  aside {
-    position: fixed !important;
-    top: 0 !important;
-    left: -250px !important;
-    height: 100vh !important;
-    z-index: 1100 !important;
-    transition: left 0.3s ease-in-out !important;
-    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
-  }
-
-  /* When the sidebar is toggled open via JS (adds .open or .active) */
-  aside.open, aside.active {
-    left: 0 !important;
-  }
-
-  /* 3. Mobile sidebar header */
-  .sidebar-header-mobile {
-    display: flex !important;
-  }
-
-  /* 4. Center category title and action buttons header */
-  main > div:first-of-type {
-    flex-direction: column !important;
-    align-items: center !important;
-    text-align: center !important;
-    gap: 12px !important;
-  }
-
-  /* 5. Reset main content padding so the grid spans edge-to-edge symmetrically */
-  main {
-    padding: 16px !important;
-    box-sizing: border-box !important;
-    width: 100% !important;
-    flex: 1 !important;
-  }
-
-  /* 6. Ensure the media grid takes up 100% width in a clean 2-column layout */
-  #media-grid {
-    display: grid !important;
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 10px !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-    align-items: start !important;
-  }
-
-  /* 7. Keep cards restricted to 1 column each without stretching */
-  #media-grid > div {
-    grid-column: span 1 !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-    min-height: 160px !important;
-    height: auto !important;
-  }
-}
-
-
-/* Ensure all modals and dialog popups always sit above sidebars and overlays */
-div[id$="-modal"], 
-#item-modal, 
-#add-category-modal, 
-#edit-category-modal, 
+/* ==========================================
+   5. MODALS (CARBON-BLACK & EMERALD THEME)
+   ========================================== */
+div[id$="-modal"],
+#item-modal,
+#add-category-modal,
+#edit-category-modal,
 #delete-category-modal {
   z-index: 2000 !important;
 }
 
-/* Ensure the sidebar/drawer z-index stays safely below modals */
-aside {
-  z-index: 1100 !important;
-}
-
-/* =========================================
-   CARBON-BLACK & EMERALD MODAL THEME
-   ========================================= */
-
-/* 1. Modal Card Container */
 div[id$="-modal"] > div,
 #item-modal > div {
   background-color: #111413 !important;
@@ -423,7 +231,6 @@ div[id$="-modal"] > div,
   color: #ffffff !important;
 }
 
-/* 2. Text Inputs, Selects, and Textareas inside Modals */
 div[id$="-modal"] input,
 div[id$="-modal"] select,
 div[id$="-modal"] textarea,
@@ -437,7 +244,6 @@ div[id$="-modal"] textarea,
   transition: border-color 0.2s ease !important;
 }
 
-/* Emerald glow on input focus */
 div[id$="-modal"] input:focus,
 div[id$="-modal"] select:focus,
 div[id$="-modal"] textarea:focus,
@@ -447,7 +253,6 @@ div[id$="-modal"] textarea:focus,
   border-color: #10b981 !important;
 }
 
-/* 3. Cancel / Secondary Buttons */
 #cancel-category-btn,
 #cancel-edit-category-btn,
 #cancel-delete-btn,
@@ -465,12 +270,11 @@ div[id$="-modal"] textarea:focus,
   background-color: rgba(255, 255, 255, 0.12) !important;
 }
 
-/* 4. Primary Action Buttons (Create / Save) -> Emerald */
 #add-category-form button[type="submit"],
 #edit-category-form button[type="submit"],
 #save-item-btn {
   background-color: #10b981 !important;
-  color: #080a09 !important; /* High-contrast dark text on emerald */
+  color: #080a09 !important;
   font-weight: 600 !important;
   transition: background-color 0.2s ease !important;
 }
@@ -481,40 +285,20 @@ div[id$="-modal"] textarea:focus,
   background-color: #059669 !important;
 }
 
-/* 5. Close (×) Icon Hover */
 #close-category-modal-btn:hover {
   color: #10b981 !important;
 }
 
-
+/* ==========================================
+   6. MOBILE RESPONSIVE STYLES (MAX-WIDTH: 650PX)
+   ========================================== */
 @media (max-width: 650px) {
-  /* Prevent the flex container from pushing content off-screen when sidebar is hidden */
   .dashboard-layout {
     display: block !important;
     width: 100% !important;
     box-sizing: border-box !important;
   }
 
-  /* Make sure main content spans 100% width cleanly */
-  main {
-    width: 100% !important;
-    max-width: 100% !important;
-    padding: 16px !important;
-    box-sizing: border-box !important;
-  }
-
-  /* Keep the 2-column grid centered and balanced */
-  #media-grid {
-    display: grid !important;
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 10px !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-  }
-}
-
-@media (max-width: 650px) {
-  /* Turn the header into a grid so the title can sit dead-center */
   header {
     display: grid !important;
     grid-template-columns: auto 1fr auto !important;
@@ -522,10 +306,100 @@ div[id$="-modal"] textarea:focus,
     padding: 12px 16px !important;
   }
 
-  /* Center the MyTrackingList title text */
   header h2 {
     text-align: center !important;
     width: 100% !important;
     font-size: 1.1rem !important;
+  }
+
+  .hamburger-btn {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+
+  aside {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    width: 260px !important;
+    max-width: 80vw !important;
+    height: 100vh !important;
+    transform: translateX(-100%);
+    transition: transform 0.25s ease-in-out;
+    border-right: 2px solid #10b981 !important;
+    border-bottom: none !important;
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
+  }
+
+  aside.open,
+  aside.active {
+    transform: translateX(0);
+  }
+
+  .sidebar-header-mobile {
+    display: flex !important;
+  }
+
+  main {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 16px !important;
+    box-sizing: border-box !important;
+    flex: 1 !important;
+  }
+
+  main > div:first-child {
+    flex-direction: column !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 12px !important;
+    padding: 16px !important;
+  }
+
+  #current-category-title {
+    font-size: 1.35rem !important;
+    margin-bottom: 8px;
+  }
+
+  /* 2-Column Mobile Media Grid */
+  #media-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+    padding: 16px 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    align-items: stretch !important;
+  }
+
+  #media-grid > div {
+    grid-column: span 1 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    min-height: 220px !important;
+  }
+}
+
+@media (max-width: 650px) {
+  /* Enforce a strict 2-column grid on mobile */
+  #media-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    grid-auto-rows: max-content !important; /* Keeps rows sized neatly */
+    gap: 10px !important;
+    padding: 16px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Optional: Set a balanced height so cards look uniform and fit ~2 rows nicely */
+  .item-card,
+  .media-card,
+  .add-item-card {
+    min-height: 210px !important;
+    max-height: 260px !important;
   }
 }
