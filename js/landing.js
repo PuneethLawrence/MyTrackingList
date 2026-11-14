@@ -7,32 +7,32 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       title: "Elden Ring",
       type: "Game",
-      image: "/img/elden.jpg"
+      image: "img/elden.jpg"
     },
     {
       title: "Crimson Desert",
       type: "Game",
-      image: "/img/crimson.jpg"
+      image: "img/crimson.jpg"
     },
     {
       title: "The Blood of the Dawn Walker",
       type: "Game",
-      image: "/img/dawn.jpg"
+      image: "img/dawn.jpg"
     },
       {
       title: "Spider-Man:  Brand New Day",
       type: "Movie",
-      image: "/img/spiderman.jpg"
+      image: "img/spiderman.jpg"
     },
       {
       title: "Dungeon & Dragons",
       type: "Movie",
-      image: "/img/dragons.jpeg"
+      image: "img/dragons.jpeg"
     },
       {
       title: "Puss in Boots: The Last Wish ",
       type: "Movie",
-      image: "/img/puss.jpg"
+      image: "img/puss.jpg"
     }
   ];
 
@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================
   const readsGrid = document.getElementById('reads-grid');
   const dummyReads = [
-    { title: "Barbarian's Adventure in a Fantasy World", type: "Manhwa", img: "img/Barbarian.jpg" },
+    { title: "Barbarian's Adventure in a Fantasy World", type: "Manhwa", img: "img/barbarian.jpg" },
     { title: "What a Bountiful Harvest, Demon Lord! ", type: "Manhwa", img: "img/bountiful.jpg" },
     { title: "The Regressed Mercenary's Machinations", type: "Manhwa", img: "img/machinations.jpg" },
     { title: "The Wandering Knight’s Survival Manual", type: "Manhwa", img: "img/wandering.jpg" },
