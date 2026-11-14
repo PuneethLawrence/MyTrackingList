@@ -1,4 +1,6 @@
-/* Base Reset & Variables */
+/* ==========================================
+   1. BASE RESET & VARIABLES
+   ========================================== */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -18,7 +20,10 @@ body {
   display: none !important;
 }
 
-/* Header Navbar */
+
+/* ==========================================
+   2. HEADER & NAVIGATION BAR
+   ========================================== */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -48,7 +53,10 @@ body {
   align-items: center;
 }
 
-/* Buttons */
+
+/* ==========================================
+   3. BUTTONS
+   ========================================== */
 .btn {
   padding: 0.6rem 1.25rem;
   font-size: 0.9rem;
@@ -57,6 +65,7 @@ body {
   cursor: pointer;
   transition: all 0.2s ease;
   border: none;
+  white-space: nowrap;
 }
 
 .btn-primary {
@@ -83,31 +92,32 @@ body {
   margin-top: 1rem;
 }
 
-/* Hero Section */
-/* Compact Hero Section */
+
+/* ==========================================
+   4. HERO SECTION & STATS BAR
+   ========================================== */
 .hero {
   text-align: center;
-  padding: 1.5rem 1rem 1rem; /* Significantly reduced top and bottom padding */
-  margin-bottom: 0.5rem;      /* Minimal gap before the next section */
+  padding: 1.5rem 1rem 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .hero h1 {
-  font-size: 2.2rem;         /* Slightly smaller heading to save height */
+  font-size: 2.2rem;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   line-height: 1.2;
   color: #10b981;
 }
 
-.hero p {
-  font-size: 0.95rem;        /* Tightened subtitle font size */
-  max-width: 520px;
-  margin: 0.5rem auto;
+.hero h1 .highlight {
+  color: #10b981;
 }
 
-.hero-stats {
-  margin-top: 1rem;          /* Tighter top margin for the stats pill */
-  padding: 0.5rem 1.25rem;   /* Slimmed down internal padding */
+.hero p {
+  font-size: 0.95rem;
+  max-width: 520px;
+  margin: 0.5rem auto;
 }
 
 .hero-badge {
@@ -124,21 +134,58 @@ body {
   margin-bottom: 1.5rem;
 }
 
-.hero h1 .highlight {
+.hero-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+  padding: 0.75rem 1.75rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 9999px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+}
+
+.stat-number {
   color: #10b981;
+  font-weight: 700;
+}
+
+.stat-label {
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+.stat-divider {
+  color: #374151;
+  font-size: 1.2rem;
 }
 
 
-
-/* Media Sections */
-.media-section {
-  width: 92%;               /* Keeps neat spacing on screen edges */
-  max-width: 1600px;        /* Expands the width from 1200px up to 1600px */
+/* ==========================================
+   5. MEDIA SECTIONS, GRIDS & CARDS
+   ========================================== */
+.media-section, 
+.full-width-section {
+  width: 100%;
+  max-width: 1600px;
   margin: 3rem auto;
-  padding: 2rem;
+  padding: 2rem 1.5rem;
   background-color: #0a0a0a;
   border: 1px solid #1a1a1a;
   border-radius: 16px;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .section-header {
@@ -170,7 +217,121 @@ body {
   border-radius: 6px;
 }
 
-/* Filter Tabs */
+/* Grids */
+.portrait-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.5rem;
+}
+
+.landscape-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+/* Media Cards */
+.media-card {
+  background-color: #121212;
+  border: 1px solid #262626;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  flex-shrink: 0;
+  width: 180px;
+}
+
+.media-card:hover {
+  transform: translateY(-4px);
+  border-color: #10b981;
+}
+
+.portrait-card .card-image-wrapper {
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+}
+
+.landscape-card .card-image-wrapper {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.card-image-wrapper img,
+.showcase-slide img,
+.slide-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.card-info {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-info h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.badge {
+  font-size: 0.7rem;
+  background-color: #000000;
+  color: #10b981;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #10b981;
+}
+
+/* Track Your Reads Card Specifics */
+.reads-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  background-color: #0a0a0a;
+  border: 1px solid #1a1a1a;
+}
+
+.reads-card .card-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  padding: 3px 8px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  border-radius: 6px;
+  z-index: 2;
+}
+
+.reads-card .card-info {
+  padding: 0.75rem;
+}
+
+.reads-card .card-info h3 {
+  font-size: 0.95rem;
+  color: #ffffff;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+/* ==========================================
+   6. FILTER TABS
+   ========================================== */
 .filter-tabs {
   display: flex;
   gap: 0.5rem;
@@ -201,104 +362,24 @@ body {
   color: #000000;
 }
 
-/* Media Grids & Cards */
-.portrait-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 1.5rem;
-}
 
-.landscape-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1.5rem;
-}
-
-.media-card {
-  background-color: #121212;
-  border: 1px solid #262626;
-  border-radius: 12px;
-  overflow: hidden;
-  transition: transform 0.2s ease, border-color 0.2s ease;
-  flex-shrink: 0;
-  width: 180px;
-}
-
-.media-card:hover {
-  transform: translateY(-4px);
-  border-color: #10b981;
-}
-
-.portrait-card .card-image-wrapper {
-  aspect-ratio: 2 / 3;
-  overflow: hidden;
-}
-
-.landscape-card .card-image-wrapper {
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-}
-
-.card-image-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.card-info {
-  padding: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.card-info h3 {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #ffffff;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.badge {
-  font-size: 0.7rem;
-  background-color: #000000;
-  color: #10b981;
-  padding: 0.2rem 0.5rem;
-  border-radius: 4px;
-  border: 1px solid #10b981;
-}
-
-/* Translucent Cross-Fade Hero Showcase */
+/* ==========================================
+   7. HERO SHOWCASE & MARQUEE ANIMATION
+   ========================================== */
 .hero-showcase {
   position: relative;
   width: 100%;
-  height: 550px; /* Increased from 320px for a taller, more cinematic look */
+  height: 550px;
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid #262626;
   margin-top: 1.5rem;
-}
-
-.hero-showcase .showcase-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
 }
 
 .showcase-slide {
   position: relative;
   width: 100%;
   height: 100%;
-}
-
-.slide-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 .showcase-overlay {
@@ -318,7 +399,44 @@ body {
   font-weight: 800;
 }
 
-/* Modals */
+/* Forced Showcase Height Expansion */
+#watch-play-section #crossfade-showcase,
+section#watch-play-section .hero-showcase {
+  height: 680px !important;
+  min-height: 680px !important;
+  max-height: 680px !important;
+}
+
+/* Infinite Looping Marquee */
+.infinite-scroll-container {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  display: flex;
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+
+#reads-grid {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  animation: scrollMarquee 35s linear infinite;
+}
+
+#reads-grid:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scrollMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+
+/* ==========================================
+   8. MODALS & TOOLTIPS
+   ========================================== */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -395,7 +513,6 @@ body {
   border-color: #10b981;
 }
 
-/* Tooltips */
 .input-tooltip {
   position: absolute;
   top: calc(100% + 4px);
@@ -421,211 +538,9 @@ body {
   margin-bottom: 1rem;
 }
 
-/* Infinite Looping Marquee Container for Reads */
-.infinite-scroll-container {
-  overflow: hidden;
-  width: 100%;
-  position: relative;
-  display: flex;
-  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-}
-
-#reads-grid {
-  display: flex;
-  gap: 20px;
-  width: max-content;
-  animation: scrollMarquee 35s linear infinite;
-}
-
-#reads-grid:hover {
-  animation-play-state: paused;
-}
-
-@keyframes scrollMarquee {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-/* Quick Stats Bar Styling */
-.hero-stats {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-  margin-top: 2.5rem;
-  padding: 0.75rem 1.75rem;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 9999px;
-  width: fit-content;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.stat-item {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.9rem;
-}
-
-.stat-number {
-  color: #10b981; /* Neon green accent */
-  font-weight: 700;
-}
-
-.stat-label {
-  color: #9ca3af;
-  font-weight: 500;
-}
-
-.stat-divider {
-  color: #374151;
-  font-size: 1.2rem;
-}
 
 /* ==========================================
-   Track Your Reads - Card & Badge Layout
-   ========================================== */
-
-/* Card Container Setup */
-.reads-card {
-  position: relative;
-  overflow: hidden;
-  border-radius: 12px;
-  background-color: #0a0a0a;
-  border: 1px solid #1a1a1a;
-}
-
-/* Top-Right Frosted Category Badge */
-.reads-card .card-badge {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(4px);
-  color: #10b981;
-  border: 1px solid rgba(16, 185, 129, 0.4);
-  padding: 3px 8px;
-  font-size: 0.7rem;
-  font-weight: 600;
-  border-radius: 6px;
-  z-index: 2;
-}
-
-/* Card Info Container */
-.reads-card .card-info {
-  padding: 0.75rem;
-}
-
-.reads-card .card-info h3 {
-  font-size: 0.95rem;
-  color: #ffffff;
-  margin: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* 1. Ensure the main container or section spans full viewport width */
-.media-section, 
-.full-width-section {
-  width: 100%;
-  max-width: 100%;
-  padding-left: 0;
-  padding-right: 0;
-  overflow: hidden; /* Prevents horizontal scrollbars from appearing */
-}
-
-/* 2. Make the scrolling grid container span edge-to-edge */
-.media-grid, 
-.marquee-container {
-  display: flex;
-  width: 100%;
-  gap: 1rem;
-  /* Enables smooth touch scrolling on mobile devices */
-  overflow-x: auto; 
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none; /* Hides scrollbar on Firefox */
-}
-
-/* Hides scrollbar on Chrome, Safari, and Opera */
-.media-grid::-webkit-scrollbar,
-.marquee-container::-webkit-scrollbar {
-  display: none;
-}
-
-/* 3. Responsive card sizing for mobile & desktop */
-.media-card, 
-.portrait-card {
-  flex: 0 0 auto;
-  /* Scales nicely: smaller on mobile, wider on desktop */
-  width: 140px; 
-}
-
-@media (min-width: 768px) {
-  .media-card, 
-  .portrait-card {
-    width: 200px; /* Expands on tablets and desktops */
-  }
-}
-/* Add side padding so sections don't touch the exact edges */
-.media-section, 
-.full-width-section {
-  width: 100%;
-  padding-left: 1.5rem;   /* Leaves space on the left edge */
-  padding-right: 1.5rem;  /* Leaves space on the right edge */
-  box-sizing: border-box; /* Ensures padding doesn't cause overflow/horizontal scrollbars */
-}
-
-/* ==========================================
-   FORCE SHOWCASE HEIGHT EXPANSION
-   ========================================== */
-
-/* 1. Set explicit height on the main container with maximum specificity */
-#watch-play-section #crossfade-showcase,
-section#watch-play-section .hero-showcase {
-  height: 680px !important;
-  min-height: 680px !important;
-  max-height: 680px !important;
-  position: relative !important;
-  overflow: hidden !important;
-}
-
-/* 2. Force all dynamic slide layers, divs, and background overlays inside to fill the height */
-#crossfade-showcase *,
-.hero-showcase * {
-  max-height: 680px;
-}
-
-#crossfade-showcase div,
-.hero-showcase div,
-.hero-showcase .slide,
-.hero-showcase .hero-slide,
-.hero-showcase .showcase-item {
-  height: 100% !important;
-  min-height: 680px !important;
-}
-
-/* 3. Force hero background images/videos to scale vertically */
-#crossfade-showcase img,
-.hero-showcase img,
-#crossfade-showcase video,
-.hero-showcase video {
-  height: 100% !important;
-  min-height: 680px !important;
-  width: 100% !important;
-  object-fit: cover !important;
-}
-
-
-/* ==========================================
-   CINEMATIC FOOTER STYLING
+   9. CINEMATIC FOOTER
    ========================================== */
 .app-footer {
   width: 100%;
@@ -646,13 +561,6 @@ section#watch-play-section .hero-showcase {
   gap: 1.5rem;
   justify-content: space-between;
   align-items: flex-start;
-}
-
-@media (min-width: 768px) {
-  .footer-content {
-    flex-direction: row;
-    align-items: center;
-  }
 }
 
 .footer-brand .footer-logo {
@@ -681,7 +589,7 @@ section#watch-play-section .hero-showcase {
 }
 
 .footer-links a:hover {
-  color: #10b981; /* Neon-green hover accent */
+  color: #10b981;
 }
 
 .footer-bottom {
@@ -694,36 +602,41 @@ section#watch-play-section .hero-showcase {
   font-size: 0.8rem;
 }
 
-/* ==========================================
-   MOBILE RESPONSIVENESS OVERRIDES (INDEX PAGE)
-   ========================================== */
+@media (min-width: 768px) {
+  .footer-content {
+    flex-direction: row;
+    align-items: center;
+  }
+}
 
+
+/* ==========================================
+   10. MOBILE RESPONSIVENESS OVERRIDES
+   ========================================== */
 @media (max-width: 768px) {
-  /* 1. Fix Navbar for mobile */
   .navbar {
-    padding: 1rem 1.25rem; /* Reduces the heavy 4rem horizontal padding */
+    padding: 0.85rem 1rem;
   }
 
   .logo {
-    font-size: 1.25rem;    /* Slightly tighter logo text */
+    font-size: 1.15rem;
   }
 
   .nav-auth {
-    gap: 0.5rem;           /* Tighter gap between Sign In and Sign Up buttons */
+    gap: 0.4rem;
   }
 
   .btn {
-    padding: 0.5rem 0.85rem; /* Compact button size for phones */
-    font-size: 0.8rem;
+    padding: 0.45rem 0.75rem;
+    font-size: 0.75rem;
   }
 
-  /* 2. Scale down Hero elements */
   .hero {
     padding: 1rem 0.5rem;
   }
 
   .hero h1 {
-    font-size: 1.75rem;     /* Scales down giant heading for mobile screens */
+    font-size: 1.75rem;
     padding: 0 0.5rem;
   }
 
@@ -732,7 +645,6 @@ section#watch-play-section .hero-showcase {
     padding: 0 1rem;
   }
 
-  /* Stack stats bar vertically or wrap nicely on tiny screens */
   .hero-stats {
     flex-direction: column;
     gap: 0.5rem;
@@ -743,7 +655,7 @@ section#watch-play-section .hero-showcase {
   }
 
   .stat-divider {
-    display: none;          /* Hide horizontal bullet dividers when stacked */
+    display: none;
   }
 
   .stat-item {
@@ -751,19 +663,18 @@ section#watch-play-section .hero-showcase {
     width: 100%;
   }
 
-  /* 3. Scale down Showcase height on mobile */
+  /* Scale Showcase on Mobile */
   #watch-play-section #crossfade-showcase,
   section#watch-play-section .hero-showcase {
-    height: 380px !important;    /* Much more phone-friendly height */
+    height: 380px !important;
     min-height: 380px !important;
     max-height: 380px !important;
   }
 
   .showcase-overlay h3 {
-    font-size: 1.25rem;        /* Smaller title overlay on mobile */
+    font-size: 1.25rem;
   }
 
-  /* 4. Section headers spacing */
   .media-section {
     padding: 1.25rem 1rem;
     margin: 1.5rem auto;
@@ -775,28 +686,8 @@ section#watch-play-section .hero-showcase {
     gap: 0.75rem;
   }
 
-  /* 5. Prevent Modals from touching screen edges */
   .modal-card {
-    max-width: 90% !important;  /* Leaves breathing room on mobile sides */
+    max-width: 90% !important;
     padding: 1.5rem 1rem;
-  }
-}
-@media (max-width: 768px) {
-  .navbar {
-    padding: 0.85rem 1rem; /* Slightly tighter vertical padding */
-  }
-
-  .logo {
-    font-size: 1.15rem;    /* Scale logo down slightly to give room */
-  }
-
-  .nav-auth {
-    gap: 0.4rem;           /* Reduce gap between buttons */
-  }
-
-  .btn {
-    padding: 0.45rem 0.75rem; /* Make buttons slightly more compact */
-    font-size: 0.75rem;       /* Ensure text like "Sign In" stays on a single line */
-    white-space: nowrap;      /* Prevent text from wrapping mid-word */
   }
 }
